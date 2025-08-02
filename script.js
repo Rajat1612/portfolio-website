@@ -182,30 +182,51 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Download resume functionality
-    const resumeBtn = document.querySelector('.btn-resume');
-    if (resumeBtn) {
-        resumeBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            // Add your resume file path here
-            const resumePath = 'path/to/your/resume.pdf';
-            
-            // Create a temporary link to download the file
+    function downloadResume(event) {
+        event.preventDefault();
+        
+        const resumeBtn = event.target;
+        const originalText = resumeBtn.innerHTML;
+        
+        // Show loading state
+        resumeBtn.innerHTML = '⬇ Downloading...';
+        resumeBtn.style.background = '#F59E0B';
+        
+        // Try multiple download methods for better browser compatibility
+        const resumePath = 'resume.pdf';
+        
+        // Method 1: Direct link with download attribute
+        try {
             const link = document.createElement('a');
             link.href = resumePath;
-            link.download = 'YourName_Resume.pdf';
+            link.download = 'resume.pdf';
+            link.target = '_blank';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
             
-            // Add download animation
-            this.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
-            this.style.background = 'linear-gradient(135deg, #10B981, #059669)';
+            // Success animation
+            resumeBtn.innerHTML = '⬇ Downloaded!';
+            resumeBtn.style.background = '#10B981';
             
             setTimeout(function() {
-                resumeBtn.innerHTML = '<i class="fas fa-download"></i> Download Resume';
-                resumeBtn.style.background = 'linear-gradient(135deg, #8B5CF6, #A855F7)';
+                resumeBtn.innerHTML = originalText;
+                resumeBtn.style.background = '#6C63FF';
             }, 2000);
-        });
+            
+        } catch (error) {
+            // Method 2: Fallback - open in new tab
+            console.log('Download method 1 failed, trying fallback...');
+            window.open(resumePath, '_blank');
+            
+            resumeBtn.innerHTML = '⬇ Opened in new tab';
+            resumeBtn.style.background = '#3B82F6';
+            
+            setTimeout(function() {
+                resumeBtn.innerHTML = originalText;
+                resumeBtn.style.background = '#6C63FF';
+            }, 2000);
+        }
     }
 
     // Add CSS for animations
