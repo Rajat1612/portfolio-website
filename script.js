@@ -189,44 +189,21 @@ document.addEventListener('DOMContentLoaded', function() {
         const originalText = resumeBtn.innerHTML;
         
         // Show loading state
-        resumeBtn.innerHTML = '⬇ Downloading...';
+        resumeBtn.innerHTML = '⬇ Opening...';
         resumeBtn.style.background = '#F59E0B';
         
-        // Try multiple download methods for better browser compatibility
+        // Open resume in the same tab
         const resumePath = 'resume.pdf';
         
-        // Method 1: Direct link with download attribute
-        try {
-            const link = document.createElement('a');
-            link.href = resumePath;
-            link.download = 'resume.pdf';
-            link.target = '_blank';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            // Success animation
-            resumeBtn.innerHTML = '⬇ Downloaded!';
-            resumeBtn.style.background = '#10B981';
-            
-            setTimeout(function() {
-                resumeBtn.innerHTML = originalText;
-                resumeBtn.style.background = '#6C63FF';
-            }, 2000);
-            
-        } catch (error) {
-            // Method 2: Fallback - open in new tab
-            console.log('Download method 1 failed, trying fallback...');
-            window.open(resumePath, '_blank');
-            
-            resumeBtn.innerHTML = '⬇ Opened in new tab';
+        // Navigate to the resume in the same tab
+        window.location.href = resumePath;
+        
+        // Note: The button state won't reset since we're navigating away
+        // But we'll keep the loading state for a moment before navigation
+        setTimeout(function() {
+            resumeBtn.innerHTML = '⬇ Opening Resume...';
             resumeBtn.style.background = '#3B82F6';
-            
-            setTimeout(function() {
-                resumeBtn.innerHTML = originalText;
-                resumeBtn.style.background = '#6C63FF';
-            }, 2000);
-        }
+        }, 500);
     }
 
     // Add CSS for animations
