@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background: #fafafa;
+    background: linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%);
     color: #1f2937;
     line-height: 1.6;
 }
@@ -238,15 +238,15 @@ section {
 }
 
 .btn-resume {
-    background: linear-gradient(135deg, #8B5CF6, #A855F7);
+    background: #6C63FF;
     color: white;
-    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
 }
 
 .btn-resume:hover {
-    background: linear-gradient(135deg, #7C3AED, #8B5CF6);
+    background: #5A52E0;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+    box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
 }
 
 .hero-image {
@@ -582,4 +582,36 @@ section {
         flex-direction: column;
         align-items: center;
     }
+}
+
+/* Additional Styles for Resume Button and Enhanced Cards */
+.resume-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: linear-gradient(90deg, #a64dff, #ff4dff);
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.resume-btn:hover {
+    background: linear-gradient(90deg, #ff4dff, #a64dff);
+    transform: scale(1.05);
+}
+
+.card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 } 
