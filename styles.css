@@ -614,4 +614,41 @@ section {
 .card:hover {
     transform: scale(1.02);
     box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+/* Skill Badges */
+.skills-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.skill-badge {
+    background: linear-gradient(135deg, #8B5CF6, #A855F7);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.skill-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+/* Contact Icons */
+.contact-info p {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact-info i {
+    color: #8B5CF6;
+    width: 20px;
 } 
